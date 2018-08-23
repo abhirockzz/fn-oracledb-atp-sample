@@ -1,0 +1,15 @@
+name: fn-oradb-app-delete-func
+version: 0.0.1
+runtime: java
+cmd: io.fnproject.example.DeleteEmployeeFunction::handle
+build_image: oracle-atp-base-build
+run_image: oracle-atp-base-run
+format: http
+path: /delete
+config:
+  DB_PASSWORD: Password@123
+  DB_URL: jdbc:oracle:thin:@kehsihbaoraatp_low
+  DB_USER: kehsihba
+  TRUSTSTORE_PASSWORD: PasswOrd_123#
+  KEYSTORE_PASSWORD: PasswOrd_123#
+  CLIENT_CREDENTIALS: /function
