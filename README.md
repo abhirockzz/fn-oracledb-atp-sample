@@ -1,4 +1,4 @@
-# Fn with Oracle ATP DB
+# Fn with Oracle Autonomous Transaction Processing
 
 ## Assumptions
 
