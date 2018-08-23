@@ -19,10 +19,7 @@
 - create employee table
 	- Connect to Oracle ATP (one way is using [SQL Developer](https://docs.oracle.com/en/cloud/paas/atp-cloud/atpug/connect-sql-dev182.html#GUID-14217939-3E8F-4782-BFF2-021199A908FD))
 	- run `seed-db.sql` to create the table
-- edit `func.yaml`
-	- `build_image: oracle-atp-base-build`
-	- `run_image: oracle-atp-base-run`
-	- populate all parameters in `config` section (except `CLIENT_CREDENTIALS` unless you have changed the location in Dockerfile for `oracle-atp-base-run` image)
+- edit `func.yaml` for all the functions - populate all parameters in `config` section (except `CLIENT_CREDENTIALS` unless you have changed the location in Dockerfile for `oracle-atp-base-run` image)
 
 ## Get, set, go...
 
