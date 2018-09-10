@@ -1,15 +1,13 @@
-name: fn-oradb-app-create-func
+schema_version: 20180708
+name: create
 version: 0.0.1
 runtime: java
 cmd: io.fnproject.example.CreateEmployeeFunction::handle
 build_image: oracle-atp-base-build
 run_image: oracle-atp-base-run
 format: http
-path: /create
-config:
-  DB_PASSWORD: Password@123
-  DB_URL: jdbc:oracle:thin:@kehsihbaoraatp_low
-  DB_USER: kehsihba
-  TRUSTSTORE_PASSWORD: PasswOrd_123#
-  KEYSTORE_PASSWORD: PasswOrd_123#
-  CLIENT_CREDENTIALS: /function
+timeout: 100
+triggers:
+- name: create_trigger
+  type: http
+  source: /create
