@@ -60,7 +60,7 @@ For further details, please refer to https://docs.oracle.com/middleware/1213/cor
    > fn create app --annotation oracle.com/oci/subnetIds='["<subnet OCID>"]' --config DB_PASSWORD=<password> --config DB_URL=<db URL> --config DB_USER=<db user> --config TRUSTSTORE_PASSWORD=<truststore password> --config KEYSTORE_PASSWORD=<keystore password> --config CLIENT_CREDENTIALS=/function fn-oracle-atp-app
    >```
 
-e.g. `fn create app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.phx.aaaaaaaaghmsma7mpqhqdhbgnby25u2zo4wqlrrcskvu7jg56dryxt3hgvka"]' --config DB_PASSWORD=Password@123 --config DB_URL=jdbc:oracle:thin:@kehsihbaoraatp_high --config DB_USER=kehsihba --config TRUSTSTORE_PASSWORD=PasswOrd_123# --config KEYSTORE_PASSWORD=PasswOrd_123# --config CLIENT_CREDENTIALS=/function fn-oracle-atp-app`
+e.g. `fn create app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.phx.aaaaaaaaghmsma7mpqhqdhbgnby25u2zo4wqlrrcskvu7jg56dryxt3hgvka"]' --config DB_PASSWORD=s3cr3t --config DB_URL=jdbc:oracle:thin:@orafoo_high --config DB_USER=foobar --config TRUSTSTORE_PASSWORD=s3cr3t --config KEYSTORE_PASSWORD=s3cr3t --config CLIENT_CREDENTIALS=/function fn-oracle-atp-app`
 
 Here is a summary of the configuration parameters
 
@@ -71,7 +71,7 @@ Here is a summary of the configuration parameters
 - `KEYSTORE_PASSWORD` - The password you enter when you download the wallet file
 - `CLIENT_CREDENTIALS` - This is the directory (within the Docker container) where the downloaded credentials are placed. It is defined in the `Dockerfile` and you can use `/function` as the value for this configuration parameter
 
-> Connecting to Oracle ATP - SSL connectivity is used to connect to the Oracle ATP instance, using the keystore and truststore files which were downloaded from the Oracle ATP service console.
+> **Connecting to Oracle ATP** - SSL connectivity is used to connect to the Oracle ATP instance, using the keystore and truststore files which were downloaded from the Oracle ATP service console.
 
 ## Build process
 
