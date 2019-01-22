@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <servers>
+    <server>
+      <id>maven.oracle.com</id>
+      <username>USER_ID</username>
+      <password>USER_PASSWORD</password>
+      <configuration>
+        <basicAuthScope>
+          <host>ANY</host>
+          <port>ANY</port>
+          <realm>OAM 11g</realm>
+        </basicAuthScope>
+        <httpConfiguration>
+          <all>
+            <params>
+              <property>
+                <name>http.protocol.allow-circular-redirects</name>
+                <value>%b,true</value>
+              </property>
+            </params>
+          </all>
+        </httpConfiguration>
+      </configuration>
+    </server>
+  </servers>
+</settings>

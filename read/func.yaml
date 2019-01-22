@@ -1,13 +1,5 @@
 schema_version: 20180708
-name: read
-version: 0.0.1
+name: read-emp
+version: 0.0.9
 runtime: java
-cmd: io.fnproject.example.GetEmployeeFunction::handle
-build_image: oracle-atp-base-build
-run_image: oracle-atp-base-run
-timeout: 100
-format: http
-triggers:
-- name: read_trigger
-  type: http
-  source: /read
+format: http-stream

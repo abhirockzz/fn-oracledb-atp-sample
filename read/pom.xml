@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <fdk.version>1.0.63</fdk.version>
+        <fdk.version>1.0.83</fdk.version>
     </properties>
     <groupId>io.fnproject.example</groupId>
     <artifactId>get-employee-function</artifactId>
@@ -13,9 +13,15 @@
 
     <repositories>
         <repository>
-            <id>project.local</id>
-            <name>project</name>
-            <url>file:///function/repo</url>
+            <id>maven.oracle.com</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>https://maven.oracle.com</url>
+            <layout>default</layout>
         </repository>
         <repository>
             <id>fn-release-repo</id>
@@ -28,6 +34,12 @@
             </snapshots>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven.oracle.com</id>
+            <url>https://maven.oracle.com</url>
+        </pluginRepository>
+    </pluginRepositories>
     <dependencies>
         <dependency>
             <groupId>com.oracle.jdbc</groupId>

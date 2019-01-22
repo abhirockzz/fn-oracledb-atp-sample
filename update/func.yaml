@@ -1,13 +1,5 @@
 schema_version: 20180708
-name: update
-version: 0.0.1
+name: update-emp
+version: 0.0.8
 runtime: java
-cmd: io.fnproject.example.UpdateEmployeeFunction::handle
-build_image: oracle-atp-base-build
-run_image: oracle-atp-base-run
-format: http
-timeout: 100
-triggers:
-- name: update_trigger
-  type: http
-  source: /update
+format: http-stream

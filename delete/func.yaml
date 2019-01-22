@@ -1,13 +1,5 @@
 schema_version: 20180708
-name: delete
-version: 0.0.1
+name: delete-emp
+version: 0.0.8
 runtime: java
-cmd: io.fnproject.example.DeleteEmployeeFunction::handle
-build_image: oracle-atp-base-build
-run_image: oracle-atp-base-run
-format: http
-timeout: 100
-triggers:
-- name: delete_trigger
-  type: http
-  source: /delete
+format: http-stream
