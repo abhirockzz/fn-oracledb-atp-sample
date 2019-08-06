@@ -1,7 +1,7 @@
 package io.fnproject.example;
 
 import java.sql.Connection;
-import java.sql.Driver;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Properties;
 
@@ -11,30 +11,32 @@ public class CreateEmployeeFunction {
 
     public CreateEmployeeFunction() {
         try {
-            Class<Driver> driver = (Class<Driver>) Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            String dbUrl = System.getenv().getOrDefault("DB_URL", "localhost");
             String dbUser = System.getenv().getOrDefault("DB_USER", "scott");
+            System.err.println("DB User " + dbUser);
+
             String dbPasswd = System.getenv().getOrDefault("DB_PASSWORD", "tiger");
 
-            System.err.println("Connecting to Oracle ATP DB...");
-            System.err.println("URL " + dbUrl);
-            System.err.println("User " + dbUser);
+            String dbServiceName = System.getenv().getOrDefault("DB_SERVICE_NAME", "localhost");
+            System.err.println("DB Service name " + dbServiceName);
+
+            String tnsAdminLocation = System.getenv().getOrDefault("CLIENT_CREDENTIALS", ".");
+            System.err.println("TNS Admin location " + tnsAdminLocation);
+
+            String dbUrl = "jdbc:oracle:thin:@" + dbServiceName + "?TNS_ADMIN=" + tnsAdminLocation;
+            System.err.println("DB URL " + dbUrl);
 
             Properties prop = new Properties();
-            
+
             prop.setProperty("user", dbUser);
             prop.setProperty("password", dbPasswd);
-            prop.put("oracle.net.tns_admin", System.getenv().getOrDefault("CLIENT_CREDENTIALS", "."));
-            prop.put("oracle.net.ssl_server_dn_match", "true");
-            prop.put("oracle.net.ssl_version", "1.2");
-            prop.put("javax.net.ssl.keyStore", System.getenv().getOrDefault("CLIENT_CREDENTIALS", ".")+"/keystore.jks");
-            prop.put("javax.net.ssl.keyStorePassword", System.getenv().getOrDefault("KEYSTORE_PASSWORD", "s3cr3t"));
-            prop.put("javax.net.ssl.trustStore", System.getenv().getOrDefault("CLIENT_CREDENTIALS", ".")+"/truststore.jks");
-            prop.put("javax.net.ssl.trustStorePassword", System.getenv().getOrDefault("TRUSTSTORE_PASSWORD", "s3cr3t"));
 
-            conn = driver.getDeclaredConstructor().newInstance().connect(dbUrl, prop);
-            System.err.println("Connected to Oracle ATP DB successfully");
+            System.err.println("Connecting to Oracle ATP DB......");
+
+            conn = DriverManager.getConnection(dbUrl, prop);
+            if (conn != null) {
+                System.err.println("Connected to Oracle ATP DB successfully");
+            }
 
         } catch (Throwable e) {
             System.err.println("DB connectivity failed due - " + e.getMessage());
@@ -49,6 +51,7 @@ public class CreateEmployeeFunction {
         String status = "Failed to insert employee " + empInfo;
 
         if (conn == null) {
+            System.err.println("Warning: JDBC connection was 'null'");
             return status;
         }
 

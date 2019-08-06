@@ -38,6 +38,7 @@ In addition to default `ADMIN` user created during setup, you need to [create an
    >```
    > create user <username> identified by "<password>";
      grant dwrole to <username>;
+	 ALTER USER <username> quota unlimited on DATA;
    >```
 
 ### Seed database
@@ -57,21 +58,19 @@ For further details, please refer to https://docs.oracle.com/middleware/1213/cor
 
    ![](images/userinput.png)
    >```
-   > fn create app --annotation oracle.com/oci/subnetIds='["<subnet OCID>"]' --config DB_PASSWORD=<password> --config DB_URL=<db URL> --config DB_USER=<db user> --config TRUSTSTORE_PASSWORD=<truststore password> --config KEYSTORE_PASSWORD=<keystore password> --config CLIENT_CREDENTIALS=/function fn-oracle-atp-app
+   > fn create app --annotation oracle.com/oci/subnetIds='["<subnet OCID>"]' --config DB_PASSWORD=<password> --config DB_SERVICE_NAME=<db service> --config DB_USER=<db user> --config CLIENT_CREDENTIALS=/function fn-oracle-atp-app
    >```
 
-e.g. `fn create app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.phx.aaaaaaaaghmsma7mpqhqdhbgnby25u2zo4wqlrrcskvu7jg56dryxt3hgvka"]' --config DB_PASSWORD=s3cr3t --config DB_URL=jdbc:oracle:thin:@orafoo_high --config DB_USER=foobar --config TRUSTSTORE_PASSWORD=s3cr3t --config KEYSTORE_PASSWORD=s3cr3t --config CLIENT_CREDENTIALS=/function fn-oracle-atp-app`
+e.g. `fn create app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.phx.aaaaaaaaghmsma7mpqhqdhbgnby25u2zo4wqlrrcskvu7jg56dryxt3hgvka"]' --config DB_PASSWORD=s3cr3t --config DB_SERVICE_NAME=orafoo_high --config DB_USER=foobar --config CLIENT_CREDENTIALS=/function fn-oracle-atp-app`
 
 Here is a summary of the configuration parameters
 
 - `DB_USER` - Name of the database user created in the `Create a user` section 
 - `DB_PASSWORD` - Database user password
-- `DB_URL` - JDBC connection string which uses a [pre-defined service name](https://docs.oracle.com/en/cloud/paas/atp-cloud/atpug/connect-predefined.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE)
-- `TRUSTSTORE_PASSWORD` - The password you enter when you download the wallet file
-- `KEYSTORE_PASSWORD` - The password you enter when you download the wallet file
+- `DB_SERVICE_NAME` - JDBC connection string which is a [pre-defined service name](https://docs.oracle.com/en/cloud/paas/atp-cloud/atpug/connect-predefined.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE)
 - `CLIENT_CREDENTIALS` - This is the directory (within the Docker container) where the downloaded credentials are placed. It is defined in the `Dockerfile` and you can use `/function` as the value for this configuration parameter
 
-> **Connecting to Oracle ATP** - SSL connectivity is used to connect to the Oracle ATP instance, using the keystore and truststore files which were downloaded from the Oracle ATP service console.
+> **Connecting to Oracle ATP** - Oracle Wallet is used to Oracle ATP instance with the 18.3 JDBC Thin Driver. Details here - https://docs.oracle.com/en/cloud/paas/atp-cloud/atpug/connect-jdbc-thin-wallet.html#GUID-20656D84-4D79-4EE9-B55F-333053948966
 
 ## Build process
 

@@ -44,8 +44,28 @@
         <dependency>
             <groupId>com.oracle.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
-            <version>12.2.0.1</version>
-        </dependency> 
+            <version>18.3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>ucp</artifactId>
+            <version>18.3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>oraclepki</artifactId>
+            <version>18.3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>osdt_core</artifactId>
+            <version>18.3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>osdt_cert</artifactId>
+            <version>18.3.0.0</version>
+        </dependency>
         <dependency>
             <groupId>com.fnproject.fn</groupId>
             <artifactId>api</artifactId>
