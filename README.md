@@ -70,7 +70,7 @@ Here is a summary of the configuration parameters
 - `DB_SERVICE_NAME` - JDBC connection string which is a [pre-defined service name](https://docs.oracle.com/en/cloud/paas/atp-cloud/atpug/connect-predefined.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE)
 - `CLIENT_CREDENTIALS` - This is the directory (within the Docker container) where the downloaded credentials are placed. It is defined in the `Dockerfile` and you can use `/function` as the value for this configuration parameter
 
-> **Connecting to Oracle ATP** - Oracle Wallet is used to Oracle ATP instance with the 18.3 JDBC Thin Driver. Details here - https://docs.oracle.com/en/cloud/paas/atp-cloud/atpug/connect-jdbc-thin-wallet.html#GUID-20656D84-4D79-4EE9-B55F-333053948966
+> **Connecting to Oracle ATP** - Oracle Wallet is used to connect with Oracle ATP instance using the 18.3 JDBC Thin Driver. Details here - https://docs.oracle.com/en/cloud/paas/atp-cloud/atpug/connect-jdbc-thin-wallet.html#GUID-20656D84-4D79-4EE9-B55F-333053948966
 
 ## Build process
 
